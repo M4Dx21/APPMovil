@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
+import { Animation, AnimationController} from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomePage implements OnInit {
   value = "dcaresg";
 
 
-  constructor(private activeroute: ActivatedRoute, private router: Router) {
+  constructor(private activeroute: ActivatedRoute, private router: Router,private animationCtrl: AnimationController) {
     // if (history.state.user) {
     //   this.userHome = history.state.user;      
     // }
@@ -22,6 +23,9 @@ export class HomePage implements OnInit {
       if (this.router.getCurrentNavigation()?.extras.state) {
           this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];
       }
+    const animation:Animation =this.animationCtrl.create()
+    .duration(1000)
+    .fromTo('opacity','1','0.5')
   });
 
     

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { FormControl,FormGroup,Validators   } from '@angular/forms';
 import { Router,NavigationExtras } from '@angular/router';
 
@@ -14,8 +13,8 @@ export class LoginPage implements OnInit {
   textBtn = "INGRESAR";
   textUser = "Usuario";
   textPass = "Contraseña";
-  desUser = "ingrese Alejandro";
-  desPass = "ingrese Valdivia";
+  desUser = "ingrese usuario";
+  desPass = "ingrese contraseña";
 
   user={
     usuario:"Alejandro",
@@ -23,9 +22,9 @@ export class LoginPage implements OnInit {
   }
 
     usuario = new FormGroup({
-    user: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(8)]),
-    pass: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(4)]),
-  });
+      user: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(8)]),
+      pass: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(4)]),
+    });
 
   testclase(){
     this.router.navigate(['/home']);
