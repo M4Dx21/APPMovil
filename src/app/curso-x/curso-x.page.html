@@ -1,6 +1,9 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Curso xxxxx</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-profesor"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Curso x </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -25,12 +28,13 @@
   </ion-label>
 </ion-item>
 
-<ion-item color="medium" button>
+<ion-item color="light" button routerLink="/generarqr">
   <ion-label>
     <h3>Generar QR</h3>
-    <p>Genera QR para pasar la asistencia</p>
+    <p>Consulta asistencia mensual de alumnos</p>
   </ion-label>
 </ion-item>
+
 
 <ion-item color="light" button>
   <ion-label>

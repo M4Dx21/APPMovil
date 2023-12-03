@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SecondComponent } from './second/second.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
@@ -10,6 +12,9 @@ const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  { 
+    path: 'second-component', component: SecondComponent 
   },
   {
     path: 'login',
@@ -55,12 +60,22 @@ const routes: Routes = [
     path: 'perfilprofesor',
     loadChildren: () => import('./perfilprofesor/perfilprofesor.module').then( m => m.PerfilprofesorPageModule)
   },
+  {
+    path: 'generarqr',
+    loadChildren: () => import('./generarqr/generarqr.module').then( m => m.GenerarqrPageModule)
+  },
+  {
+    path: 'lectorqr',
+    loadChildren: () => import('./lectorqr/lectorqr.module').then( m => m.LectorqrPageModule)
+  }
 ];
 
 @NgModule({
-  imports: [
+  imports: [RouterModule.forRoot(routes),
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  
+
 })
 export class AppRoutingModule { }

@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/curso-x"></ion-back-button>
+    </ion-buttons>
+    <ion-title>QR Asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-content-centered" [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-row-centered">
+      <ion-col size-md="6" offset-md="3" class="ion-col-centered">
+        <ion-text color="primary">
+          <h1>Generar QR</h1>
+        </ion-text>
+        <ion-input
+        type="text"
+        [(ngModel)]="texto"
+        class="ion-input-centered"
+        style="background-color: #f5f5f5; border: 1px solid #ccc; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); color: black;"
+      ></ion-input>
+      
+
+        <br /><br />
+        <qrcode [qrdata]="texto" [width]="300" class="ion-qrcode-centered"></qrcode>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -4,11 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedIn = false;
+  private isLoggedIn = true;
 
   login(username: string, password: string): boolean {
-    
-    if (username === 'usuario1' && password === 'contraseña1') {
+    if (username === 'alejandro' && password === 'valdivia') {
+      this.isLoggedIn = true;
+      return true;
+    } else if (username === 'diego' && password === 'cares') {
       this.isLoggedIn = true;
       return true;
     }
@@ -17,10 +19,6 @@ export class AuthService {
 
   logout(): void {
     this.isLoggedIn = false;
-  }
-
-  isAuthenticated(): boolean {
-    return this.isLoggedIn;
   }
 }
 

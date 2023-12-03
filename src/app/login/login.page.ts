@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormGroup,Validators   } from '@angular/forms';
 import { Router,NavigationExtras } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -8,39 +9,23 @@ import { Router,NavigationExtras } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  username: string = '';
+  password: string = '';
 
-  textBtn = "INGRESAR";
-  textUser = "Usuario";
-  textPass = "Contraseña";
-  desUser = "ingrese usuario";
-  desPass = "ingrese contraseña";
+  constructor(private authService: AuthService, private router: Router) {}
 
-  user={
-    usuario:"Alejandro",
-    apellido:"Valdivia"
+  login() {
+    if (this.authService.login(this.username, this.password)) {
+      if (this.username.toLowerCase() === 'alejandro') {
+        this.router.navigate(['/home']);
+      } else if (this.username.toLowerCase() === 'diego') {
+        this.router.navigate(['/home-profesor']);
+      } else {
+        console.log('Tipo de usuario desconocido');
+      }
+    } else {
+      console.log('Credenciales incorrectas');
+    }
   }
-
-    usuario = new FormGroup({
-      user: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(8)]),
-      pass: new FormControl('',[Validators.required, Validators.minLength(4),Validators.maxLength(4)]),
-    });
-
-  testclase(){
-    this.router.navigate(['/home']);
-}
-
-  goToPagina2() {
-    let navigationExtras: NavigationExtras = {
-      state: {user: this.usuario.value.user}
-      };
-      this.router.navigate(['/home'],navigationExtras); // Esta linea es la que me permite navegar a otro page 
-  }
-
-
-  constructor(private router: Router) { }
-
-  ngOnInit() {
-  }
-
 }

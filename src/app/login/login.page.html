@@ -4,29 +4,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="login-content">
-  <ion-item>
-    <ion-input label="USUARIO: " [(ngModel)]="user.usuario"></ion-input>
-  </ion-item>
-
-  <div class="centered-container">
-    <img src="assets/img_login.png" alt="Login Image" class="login-image">
-  </div>
-
-  <form [formGroup]="usuario">
+<ion-content>
+  <form (ngSubmit)="login()">
+    <div class="centered-container">
+      <img src="assets/img_login.png" alt="Login Image" class="login-image">
+    </div>
     <ion-item>
-      <ion-input label="{{textUser}}" labelPlacement="floating" placeholder="{{desUser}}" formControlName="user"></ion-input>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)]="username" name="username" type="text"></ion-input>
     </ion-item>
-  
     <ion-item>
-      <ion-input label="{{textPass}}" labelPlacement="floating" placeholder="{{desPass}}" formControlName="pass"></ion-input>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
     </ion-item>
-  
-    
-    <ion-button expand="block" color="success"  (click)="testclase()" fill="outline">{{textBtn}}</ion-button> 
-    <ion-button expand="block" color="success"  [routerLink]="['/home-profesor']" fill="outline">Ingresar</ion-button> 
-
+    <ion-button type="submit" expand="full">Iniciar Sesión</ion-button>
   </form>
-  
-
 </ion-content>
